@@ -21,7 +21,7 @@ void setup()
 {
   size(1000,600);
   //creating the stars background
-  border = width / 30;
+  border = width / 15;
   for (int i = 0; i < 200; i++)
   {
     Stars s = new Stars(random(border,width-border),random(border,height-border), (int) random(2,10));
