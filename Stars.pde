@@ -1,4 +1,4 @@
-class Stars
+class Stars extends Space
 {
   float centerX,centerY;
   int size;
