@@ -1,15 +1,11 @@
 class Space
 {
-  float border;
+  float border, windowBorder;
+  float borderLength = 8/7;
   
   Space()
   {
      border = width / 10;
+     windowBorder = border * borderLength;
   }
-  
-  void update()
-  {
-    
-  }
-  
 }//end class space
