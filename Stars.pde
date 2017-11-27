@@ -21,6 +21,8 @@ class Stars extends Space
   
   void update()
   {
+    
+    
     if(keyPressed)
     {
       if (keyCode == LEFT)
