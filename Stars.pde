@@ -1,27 +1,39 @@
 class Stars extends Space
 {
-  float centerX,centerY;
+  float centerX,centerY,distance, pdistance;
   int size;
   color star;
   
-  Stars(float centerX, float centerY, int size)
+  Stars(float centerX, float centerY)
   {
     this.centerX = centerX;
     this.centerY = centerY;
-    this.size = size;
     star = 255;
+    pdistance = distance = width;
   }
   
   void render()
   {
-      stroke(star);
-      fill(star);
-      ellipse(centerX,centerY,size,size);
+    float sx = map(centerX/distance,0,1,0,width);
+    float sy = map(centerY/distance,0,1,0,height);
+    
+    float tx = map(centerX/pdistance,0,1,0,width);
+    float ty = map(centerY/pdistance,0,1,0,height);
+    pdistance = distance;
+    stroke(star);
+    line(sx,sy,tx,ty);
   }
   
   void update()
   {
+    distance -=  speed;
     
+    if (distance < 2)
+    {
+      distance = width;
+      centerX = random(-width/2,width/2);
+      centerY = random(-height/2,height/2);
+    } 
     
     if(keyPressed)
     {
@@ -29,13 +41,14 @@ class Stars extends Space
       centerX++;
       
       if (keyCode == RIGHT)
-       centerX-- ;
+       centerX--;
     }
     
     if (centerX > width)
-    centerX = 0;
+    centerX = -width;
     
-    if (centerX < 0)
-    centerX = width;
+    if (centerX < -width)
+    centerX = width; 
   }
+  
 }
