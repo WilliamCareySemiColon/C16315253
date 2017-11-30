@@ -16,6 +16,7 @@ Date Finished: ?
 //variables to control within the programme
 ArrayList<Stars> stars = new ArrayList<Stars>();
 Ship ship;
+Histogram his;
 float speed, speed1;
 void setup()
 {
@@ -37,12 +38,13 @@ void setup()
 
 void draw()
 {
+  his = new Histogram();
   //changing the focal co-ordinates so it is focuesed in the center point instead
   translate(width/2,height/2);
   //setting the background to be black as we are in space
   background(0);
   //setting the speed value inside the draw metjod so it can be applied to all stars and easily modified
-  speed = map(speed1,0,width,0,200);
+  speed = map(speed1,0,width,0,50);
   //going through the arraylist of stars to display onto the screen
   for(Stars s: stars)
   {
@@ -54,6 +56,7 @@ void draw()
   
   //drawing the outline of the ship to the screen
   ship.drawShip();
+  his.drawBar();
 }
 
 /******************************************************************************************
@@ -62,19 +65,23 @@ Method to change the speed of the stars, which is controlled by the input by use
 
 void changeSpeed()
 {
-  if (keyPressed && speed1 > -1 && speed1 < 201)
+  if (keyPressed && speed1 >= 0 && speed1 <= width)
   {
     if (keyCode == UP)
-      speed1++;
+    {
+        speed1 += 10;
+    }
       
       if (keyCode == DOWN)
-      speed1--;
+      {
+        speed1 -= 10;
+      }
   }
   
   if (speed1 < 0)
   speed1 = 0;
   
-  if (speed1 > 200)
-  speed1 = 200;
+  if (speed1 > width)
+  speed1 = width;
   
 }//end change speed
