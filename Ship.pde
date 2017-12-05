@@ -1,3 +1,6 @@
+/**************************************************************************
+Drawing the outline of the ship in first person view for interaction purpose
+***************************************************************************/
 class Ship extends Space
 {
   PShape ship;

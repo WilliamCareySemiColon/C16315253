@@ -20,7 +20,7 @@ Histogram his;
 float speed, speed1;
 void setup()
 {
-  size(1000,600);
+  size(1280,720);
   //Space sp = new Space();
   //creating the stars background
   for (int i = 0; i < 1000; i++)
