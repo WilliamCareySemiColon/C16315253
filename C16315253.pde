@@ -71,7 +71,10 @@ void draw()
   
   ship.drawShip();
   for(Button test: buttons)
-  test.buttonDraw();
+  {
+    test.buttonDraw();
+    test.update();
+  }
   his.drawBar();
 }
 

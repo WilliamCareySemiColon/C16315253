@@ -18,10 +18,28 @@ class Button extends Ship
     fill(shipColour);
     rect(topLeftCornerX,topLeftCornerY,buttonSize,buttonSize);
     if (shipColour < 255/2)
-    fill((shipColour*6)%255);
+    fill(255);
     else
-    fill((shipColour/6)%255);
-    textSize(28);
-    text(name,topLeftCornerX,topLeftCornerY +buttonSize/2);
+    fill(0);
+    textSize(10);
+    textAlign(CENTER);
+    text(name,topLeftCornerX+buttonSize/2,topLeftCornerY +buttonSize/2);
+  }
+  
+  void update()
+  {
+    if (mousePressed)
+    {
+      if ((mouseX > topLeftCornerX || mouseX < topLeftCornerX + buttonSize) && (mouseY > topLeftCornerY || mouseY < topLeftCornerY + buttonSize))
+      {
+        shipColour =0;
+      }
+      
+      else
+      {
+        shipColour = 100;
+      }
+      
+    }
   }
 }
