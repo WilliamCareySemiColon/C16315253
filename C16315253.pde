@@ -15,21 +15,35 @@ Date Finished: ?
 ******************************************************************************************************************************/
 //variables to control within the programme
 ArrayList<Stars> stars = new ArrayList<Stars>();
+ArrayList<Button> buttons = new ArrayList<Button>();
 Ship ship;
 Histogram his;
+Button test;
 float speed, speed1;
+float butPosX, butPosY;
 void setup()
 {
   size(1280,720);
-  //Space sp = new Space();
+  butPosX = width/3;
+  butPosY = height/2.5;
   //creating the stars background
   for (int i = 0; i < 1000; i++)
   {
     Stars s = new Stars(random(-width/2,width/2),random(-height/2,height/2));
     stars.add(s);
   }
-  //creating the ship object
-  ship = new Ship();
+  //creating the objects
+  ship = new Ship(100);
+  his = new Histogram();
+  //creating all the buttons
+  test = new Button(-butPosX,-butPosY, "Slow Down",150);
+  buttons.add(test);
+  test = new Button(butPosX,-butPosY, "Speed Up",150);
+  buttons.add(test);
+  test = new Button(-butPosX,butPosY, "test",150);
+  buttons.add(test);
+  test = new Button(butPosX,butPosY, "test",150);
+  buttons.add(test);
   //setting the ship shape
   ship.setShip();
   //seeting the speed so we are not moving immediately
@@ -38,7 +52,6 @@ void setup()
 
 void draw()
 {
-  his = new Histogram();
   //changing the focal co-ordinates so it is focuesed in the center point instead
   translate(width/2,height/2);
   //setting the background to be black as we are in space
@@ -55,7 +68,10 @@ void draw()
   changeSpeed();
   
   //drawing the outline of the ship to the screen
+  
   ship.drawShip();
+  for(Button test: buttons)
+  test.buttonDraw();
   his.drawBar();
 }
 

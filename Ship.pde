@@ -4,12 +4,18 @@ Drawing the outline of the ship in first person view for interaction purpose
 class Ship extends Space
 {
   PShape ship;
+  color shipColour;
+  
+  Ship(color c)
+  {
+    shipColour = c;
+  }
   
   //deciding the coordinates of the ship
   void setShip()
   {
-    stroke(100);
-    fill(100);
+    stroke(shipColour);
+    fill(shipColour);
     ship = createShape();
     ship.beginShape();
     //startimg at the left bottom

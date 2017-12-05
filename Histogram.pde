@@ -1,7 +1,7 @@
 /******************************************************************************************************
 The class to give a visual aspect of the speed through the space which is also reflected by the stars
 *******************************************************************************************************/
-class Histogram
+class Histogram extends Space
 {
   //fields to control the histogramme
   float maxsize, staticsize;
@@ -11,6 +11,7 @@ class Histogram
   //constructor to set the position of the bar
   Histogram()
   {
+    super();
     centery = height/4.75;
     centerx = height/4;
     widthOfBar = width/11;
@@ -25,15 +26,16 @@ class Histogram
       //drawing the fixed bar
       stroke(0);
       fill(0);
-      rect(width/10,centerx,widthOfBar, centery);
+      rect(border,centerx,widthOfBar, centery);
       //drawing the adjustable bar
       noStroke();
       fill(255,0,0);
-      rect(width/10,staticsize,widthOfBar, maxsize);
+      rect(border,staticsize,widthOfBar, maxsize);
       //displaying the speed in text format for more visual effect
       textSize(10);
       int temp = (int)(maxsize * 10);
       fill(255);
+      textSize(20);
       text(Integer.toString(temp)+"M/P",width/10,centerx + centery - 5);
   }
 }
