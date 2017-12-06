@@ -58,11 +58,28 @@ class Stars extends Space
        centerX--;
     }
     
-    if (centerX > width)
-    centerX = -width;
+    if (centerX > width/2)
+    centerX = -width/2;
     
-    if (centerX < -width)
-    centerX = width; 
+    if (centerX < -width/2)
+    centerX = width/2; 
   }
   
+  
+  void buttonPressed(String name)
+  {
+    if(name == "Turn Left")
+    {
+      centerX++;
+    }
+    if(name == "Turn Right")
+    {
+      centerX--;
+    }
+    if (centerX > width/2)
+    centerX = -width/2;
+    
+    if (centerX < -width/2)
+    centerX = width/2; 
+  }
 }

@@ -21,28 +21,33 @@ Histogram his;
 Button test;
 float speed, speed1;
 float butPosX, butPosY;
+float halfWidth, halfHeight;
+Bullet b;
 void setup()
 {
-  size(1280,720);
+  size(1000,600);
   butPosX = width/3;
   butPosY = height/2.5;
+  halfWidth = width/2;
+  halfHeight = height/2;
   //creating the stars background
   for (int i = 0; i < 1000; i++)
   {
     Stars s = new Stars(random(-width/2,width/2),random(-height/2,height/2));
     stars.add(s);
   }
+  b = new Bullet();
   //creating the objects
   ship = new Ship(100);
   his = new Histogram();
   //creating all the buttons
-  test = new Button(-butPosX,-butPosY, "Slow Down",150);
+  test = new Button(-halfWidth,-halfHeight, "Slow Down",color(255,0,0));
   buttons.add(test);
-  test = new Button(butPosX,-butPosY, "Speed Up",150);
+  test = new Button(-halfWidth + width/15,-halfHeight, "Speed Up",color(255,0,0));
   buttons.add(test);
-  test = new Button(-butPosX,butPosY, "test",150);
+  test = new Button(-halfWidth,butPosY, "Turn Left",200);
   buttons.add(test);
-  test = new Button(butPosX,butPosY, "test",150);
+  test = new Button(halfWidth-width/17.5,butPosY, "Turn Right",200);
   buttons.add(test);
   //setting the ship shape
   ship.setShip();
@@ -53,7 +58,7 @@ void setup()
 void draw()
 {
   //changing the focal co-ordinates so it is focuesed in the center point instead
-  translate(width/2,height/2);
+  translate(halfWidth,halfHeight);
   //setting the background to be black as we are in space
   background(0);
   //setting the speed value inside the draw metjod so it can be applied to all stars and easily modified
@@ -68,9 +73,9 @@ void draw()
   changeSpeed();
   
   //drawing the outline of the ship to the screen
-  
+  b.render();
   ship.drawShip();
-  for(Button test: buttons)
+  for (Button test : buttons)
   {
     test.buttonDraw();
     test.update();
