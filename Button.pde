@@ -61,14 +61,14 @@ class Button extends Ship
         case "Turn Left":
           for(Stars s: stars)
           {
-            //s.buttonPressed(name);
+            s.buttonPressed(name);
        }
           break;
           
         case "Turn Right":
           for(Stars s: stars)
           {
-            //s.buttonPressed(name);
+            s.buttonPressed(name);
           }
           break;
       }

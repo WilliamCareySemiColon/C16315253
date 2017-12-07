@@ -23,9 +23,9 @@ class Bullet
     
     if (keyPressed)
     {
-      if (keyCode == ' ')
+      if (key == ' ')
       {
-         stroke(255,255,0);
+         stroke(0,255,0);
          line(originalx,originaly,targetx,targety);
       }
     }
