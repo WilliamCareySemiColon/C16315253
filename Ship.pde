@@ -19,20 +19,20 @@ class Ship extends Space
     ship = createShape();
     ship.beginShape();
     //startimg at the left bottom
-    ship.vertex(-width/2,height/2);
-    ship.vertex(-width/2,height/2-border);
-    ship.vertex(0,height/6);
-    ship.vertex(width/2,(height/2)-border);
-    ship.vertex(width/2,height/2); 
+    ship.vertex(-halfWidth,halfHeight);
+    ship.vertex(-halfWidth,halfHeight-border);
+    ship.vertex(0,halfHeight/3);
+    ship.vertex(halfWidth,halfHeight-border);
+    ship.vertex(halfWidth,halfHeight); 
     //cpmplete the bottom part of the ship
-    ship.vertex(-width/2,height/2);
+    ship.vertex(-halfWidth,halfHeight);
     //move to the top area area and repeating the process
-    ship.vertex(-width/2,-height/2);
-    ship.vertex(width/2,-height/2);
-    ship.vertex(width/2,-height/2 + border);
-    ship.vertex(0,-(height/6));
-    ship.vertex(-width/2,-height/2 + border);
-    ship.vertex(-width/2,-height/2);
+    ship.vertex(-halfWidth,-halfHeight);
+    ship.vertex(halfWidth,-halfHeight);
+    ship.vertex(halfWidth,-halfHeight + border);
+    ship.vertex(0,-halfHeight/3);
+    ship.vertex(-halfWidth,-halfHeight + border);
+    ship.vertex(-halfWidth,-halfHeight);
     //finish the shape
     ship.endShape(CLOSE);
   }

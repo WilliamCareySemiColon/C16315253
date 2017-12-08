@@ -16,12 +16,14 @@ Date Finished: ?
 //variables to control within the programme
 ArrayList<Stars> stars = new ArrayList<Stars>();
 ArrayList<Button> buttons = new ArrayList<Button>();
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 Ship ship;
 Histogram his;
 Button test;
 float speed, speed1;
 float butPosX, butPosY;
 float halfWidth, halfHeight;
+//float upd;
 Bullet b;
 void setup()
 {
@@ -36,7 +38,6 @@ void setup()
     Stars s = new Stars(random(-width/2,width/2),random(-height/2,height/2));
     stars.add(s);
   }
-  b = new Bullet();
   //creating the objects
   ship = new Ship(100);
   his = new Histogram();
@@ -53,6 +54,7 @@ void setup()
   ship.setShip();
   //seeting the speed so we are not moving immediately
   speed1 = 0;
+ 
 }
 
 void draw()
@@ -73,7 +75,7 @@ void draw()
   changeSpeed();
   
   //drawing the outline of the ship to the screen
-  b.render();
+  getBullet();
   ship.drawShip();
   for (Button test : buttons)
   {
@@ -109,3 +111,24 @@ void changeSpeed()
   speed1 = width;
   
 }//end change speed
+
+void getBullet()
+{
+  if (keyPressed)
+  {
+    if(key == ' ')
+    {
+      Bullet b = new Bullet();
+      bullets.add(b);
+    }
+  }
+  if(bullets.size() > 0)
+  {
+    for(Bullet b: bullets)
+    {
+      b.render();
+      //b.update();
+      //b.direction();
+    }
+  }
+}
