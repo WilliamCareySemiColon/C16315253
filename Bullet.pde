@@ -1,48 +1,34 @@
 class Bullet
 {
-  float size;
+  float size = 1;
   float original_posx, original_posy;
-  float target_posx, target_posy;
-  float bull_speed;
-  float distance;
+  float target_posx;
+  float pathwayToFinalX;
   pathWay path;
   
   float update;
   
   Bullet()
   {
-    //update = up;
-    target_posx = original_posx = 0;
-    original_posy = width/40;
-    target_posy = original_posy - 5;
-    bull_speed = 10;
-    distance = 100;
-    path = new pathWay(original_posx,original_posy,target_posx ,target_posy);
+    
+    original_posx = 0;
+    original_posy = height/6;
+    pathwayToFinalX = (((mouseX-halfWidth))/ ((mouseY-halfHeight)-original_posy))*5*size;
+    target_posx = original_posx - pathwayToFinalX;
+    path = new pathWay();
   }
   
   void render()
   {
     path.render();
-    float updatex = path.endPointX;
-    float updatey =  path.endPointY;
-    
-    float originalx = map(original_posx/distance, 0, 1, 0, width);
-    float originaly = map(original_posy/distance,0,1,0,height);
-    
-    float targetx = map(target_posx/distance, 0, 1, 0, width);
-    float targety = map(target_posy/distance, 0, 1, 0, height);
-    
     stroke(0,255,0);
-    line(originalx,originaly,updatex,updatey);
+    line(original_posx,original_posy,target_posx ,original_posy-(5*size));
   }
   
   void update()
   {
-    original_posy = target_posy;
-    target_posy = original_posy - 5;
+    original_posy = original_posy - (5*size);
     original_posx = target_posx;
-    target_posx = original_posx + update;
-    
+    target_posx = original_posx - pathwayToFinalX;
   }
-  
 }

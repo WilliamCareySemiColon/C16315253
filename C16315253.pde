@@ -127,8 +127,7 @@ void getBullet()
     for(Bullet b: bullets)
     {
       b.render();
-      //b.update();
-      //b.direction();
+      b.update();
     }
   }
 }
