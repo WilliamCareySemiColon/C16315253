@@ -23,11 +23,13 @@ Button test;
 float speed, speed1;
 float butPosX, butPosY;
 float halfWidth, halfHeight;
-//float upd;
+boolean flag ;
 Bullet b;
+Warp warp;
 void setup()
 {
   size(1000,600);
+  flag = false;
   butPosX = width/3;
   butPosY = height/2.5;
   halfWidth = width/2;
@@ -41,6 +43,7 @@ void setup()
   //creating the objects
   ship = new Ship(100);
   his = new Histogram();
+  warp = new Warp();
   //creating all the buttons
   test = new Button(-halfWidth,-halfHeight, "Slow Down",color(255,0,0));
   buttons.add(test);
@@ -49,6 +52,14 @@ void setup()
   test = new Button(-halfWidth,butPosY, "Turn Left",200);
   buttons.add(test);
   test = new Button(halfWidth-width/17.5,butPosY, "Turn Right",200);
+  buttons.add(test);
+  test = new Button(-test.buttonSize,-butPosY * 1.25, "Load Bomb",color(0,255,0));
+  buttons.add(test);
+  test = new Button(0,-butPosY * 1.25, "Load Bullet",color(0,255,0));
+  buttons.add(test);
+  test = new Button(-test.buttonSize,butPosY, "Warp",color(0,0,255));
+  buttons.add(test);
+  test = new Button(0,butPosY, "Reset",color(0,0,255));
   buttons.add(test);
   //setting the ship shape
   ship.setShip();
@@ -62,8 +73,8 @@ void draw()
   //changing the focal co-ordinates so it is focuesed in the center point instead
   translate(halfWidth,halfHeight);
   //setting the background to be black as we are in space
-  background(0);
-  //setting the speed value inside the draw metjod so it can be applied to all stars and easily modified
+  background(warp.spaceBackGround);
+  //setting the speed value inside the draw method so it can be applied to all stars and easily modified
   speed = map(speed1,0,width,0,50);
   //going through the arraylist of stars to display onto the screen
   for(Stars s: stars)
@@ -116,11 +127,21 @@ void getBullet()
 {
   if (keyPressed)
   {
+    flag = !flag;
     if(key == ' ')
     {
       Bullet b = new Bullet();
       bullets.add(b);
+      flag = true;
     }
+    
+    if (key == '1' && flag == true)
+    {
+      Bullet b = new Bomb();
+      bullets.add(b);
+      flag = false;
+    }
+    
   }
   if(bullets.size() > 0)
   {

@@ -59,18 +59,32 @@ class Button extends Ship
           break;
           
         case "Turn Left":
-          for(Stars s: stars)
-          {
-            s.buttonPressed(name);
-       }
-          break;
-          
         case "Turn Right":
           for(Stars s: stars)
           {
             s.buttonPressed(name);
           }
           break;
+          
+       case "Load Bomb":
+          Bullet b = new Bomb();
+          bullets.add(b);
+          break;
+          
+       case "Load Bullet":
+          b = new Bullet();
+          bullets.add(b);
+          break;
+          
+       case "Warp":
+         warp.buttonPressed();
+         break;
+         
+       case "Reset":
+         warp.reset();
+         break;
+          
+          
       }
     }
     else
