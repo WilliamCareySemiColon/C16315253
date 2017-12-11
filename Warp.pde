@@ -1,3 +1,5 @@
+/*Changing the background screen inside this class and the speed so it is looked like we are warping*/
+
 class Warp
 {
   color spaceBackGround =  0;

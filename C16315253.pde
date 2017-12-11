@@ -13,7 +13,7 @@ Student number: C16315253
 Date Started: 21-11-2017
 Date Finished: ?
 ******************************************************************************************************************************/
-//variables to control within the programme
+//variables, arraylist and objects to control within the programme
 ArrayList<Stars> stars = new ArrayList<Stars>();
 ArrayList<Button> buttons = new ArrayList<Button>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
@@ -23,13 +23,12 @@ Button test;
 float speed, speed1;
 float butPosX, butPosY;
 float halfWidth, halfHeight;
-boolean flag ;
 Bullet b;
 Warp warp;
 void setup()
 {
+  //setting up all the variables that are needed to run the programme
   size(1000,600);
-  flag = false;
   butPosX = width/3;
   butPosY = height/2.5;
   halfWidth = width/2;
@@ -70,7 +69,7 @@ void setup()
 
 void draw()
 {
-  //changing the focal co-ordinates so it is focuesed in the center point instead
+  //changing the local co-ordinates so it is focuesed in the center of the  screen instead
   translate(halfWidth,halfHeight);
   //setting the background to be black as we are in space
   background(warp.spaceBackGround);
@@ -85,8 +84,10 @@ void draw()
   //changing the speed by pressing the up and down buttons and controlling it so it does not go over the limit
   changeSpeed();
   
-  //drawing the outline of the ship to the screen
+  //drawing the bullets to the screen
   getBullet();
+  
+  //drawing the outline of the ship to the screen - incuding the buttons and the bar to display the speed
   ship.drawShip();
   for (Button test : buttons)
   {
@@ -123,23 +124,24 @@ void changeSpeed()
   
 }//end change speed
 
+/*******************************************************************
+Method to draw the bullets to the screen based upon the user input
+*******************************************************************/
+
 void getBullet()
 {
   if (keyPressed)
   {
-    flag = !flag;
     if(key == ' ')
     {
       Bullet b = new Bullet();
       bullets.add(b);
-      flag = true;
     }
     
-    if (key == '1' && flag == true)
+    if (key == '1')
     {
       Bullet b = new Bomb();
       bullets.add(b);
-      flag = false;
     }
     
   }

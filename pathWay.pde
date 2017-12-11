@@ -1,3 +1,5 @@
+//The render of where the person is going to shoot. 
+
 class pathWay extends Space
 { 
   float endPointX, endPointY;

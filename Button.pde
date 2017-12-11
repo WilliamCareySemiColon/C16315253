@@ -1,11 +1,17 @@
+/********************************************************************
+Buttons to control what to do on the ship - used for more UI
+********************************************************************/
+
 class Button extends Ship
 {
+  //variabes to control the programme
   float topLeftCornerX,topLeftCornerY;
   String name;
   float buttonSize;
   boolean flag;
   color track;
   
+  //constructor to give each button an unique feature
   Button(float x, float y, String n, color c)
   {
     super(c);
@@ -17,6 +23,7 @@ class Button extends Ship
     buttonSize = border/1.75;
   }
   
+  //drawing the button to the screen
   void buttonDraw()
   {
     stroke(0);
@@ -31,9 +38,10 @@ class Button extends Ship
     text(name,topLeftCornerX+buttonSize/2,topLeftCornerY +buttonSize/2);
   }
   
+  //updateing the buttons and checking if they have been clicked
   void update()
   {
-    //checking where the mouse x location
+    //checking where the mouse x location and making sure it is inside the buttons location
     boolean checkX1 = (mouseX - halfWidth  > topLeftCornerX  ? true: false);
     boolean checkX2 = (mouseX - halfWidth < topLeftCornerX + buttonSize ? true: false);
     boolean checkX = checkX1 && checkX2;
@@ -43,9 +51,11 @@ class Button extends Ship
     boolean checkY = checkY1 && checkY2;
     
     boolean overall = checkX && checkY;
+    //giving a function to each button by checking its name and changes its colour so we know it has been pressed
     if (mousePressed && overall)
     {
       shipColour = 0;
+      //all the buttons functions
       switch(name)
       {
         case "Slow Down": 
@@ -83,11 +93,10 @@ class Button extends Ship
        case "Reset":
          warp.reset();
          break;
-          
-          
-      }
+      }//end switch statement
     }
+    //reset the button to its original colour
     else
     shipColour = track;
-  }
-}
+  }//end update()
+}//end class button
