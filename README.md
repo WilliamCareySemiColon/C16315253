@@ -21,5 +21,5 @@ Allowing many of the code to work together and make sure eventhing was running s
 >and **right** to move right. You can also press the **Space** bar to shoot regular bullets  and **1** to shoot bombs, based upon your >mouse location
 
 **Youtube Link**
-<a href="https://www.youtube.com/watch?v=u5nc7LkY1uw">
-<img src="https://www.youtube.com/watch?v=u5nc7LkY1uw" alt="Prototype weapon system" width="240" height="180" border="10" /></a>
+
+[![YouTube](http://img.youtube.com/vi/u5nc7LkY1uw/0.jpg)](https://www.youtube.com/watch?v=u5nc7LkY1uw")
